@@ -25,7 +25,7 @@ class StockCollection(object):
             os.mkdir(STOCKS_DIR)
 
         # Download the historical stock data
-        url = 'http://ichart.finance.yahoo.com/table.csv?s=' + symbol + '&c=1800'
+        url = 'http://real-chart.finance.yahoo.com/table.csv?s=' + symbol + '&c=1800'
         response = urllib2.urlopen(url)
         html = response.read()
 
@@ -69,53 +69,77 @@ class StockCollection(object):
     def max_day_increase(self, symbols):
         for symbol in symbols:
             symbol = symbol.upper()
-            history = self.stocks[symbol]
-            history.get_max_increase()
+            if symbol not in self.stocks:
+                print "%s is not in list" % (symbol)
+            else:
+                history = self.stocks[symbol]
+                history.get_max_increase()
 
     def max_day_decrease(self, symbols):
         for symbol in symbols:
             symbol = symbol.upper()
-            history = self.stocks[symbol]
-            history.get_max_decrease()
+            if symbol not in self.stocks:
+                print "%s is not in list" % (symbol)
+            else:
+                history = self.stocks[symbol]
+                history.get_max_decrease()
 
     def max_day_percent_increase(self, symbols):
         for symbol in symbols:
             symbol = symbol.upper()
-            history = self.stocks[symbol]
-            history.get_max_percent_increase()
+            if symbol not in self.stocks:
+                print "%s is not in list" % (symbol)
+            else:
+                history = self.stocks[symbol]
+                history.get_max_percent_increase()
 
     def max_day_percent_decrease(self, symbols):
         for symbol in symbols:
             symbol = symbol.upper()
-            history = self.stocks[symbol]
-            history.get_max_percent_decrease()
+            if symbol not in self.stocks:
+                print "%s is not in list" % (symbol)
+            else:
+                history = self.stocks[symbol]
+                history.get_max_percent_decrease()
 
     def max_day_volume(self, symbols):
         for symbol in symbols:
             symbol = symbol.upper()
-            history = self.stocks[symbol]
-            history.get_max_volume()
+            if symbol not in self.stocks:
+                print "%s is not in list" % (symbol)
+            else:
+                history = self.stocks[symbol]
+                history.get_max_volume()
 
     def max_month_increase(self, symbols):
         for symbol in symbols:
             symbol = symbol.upper()
-            history = self.stocks[symbol]
-            history.get_max_month()
+            if symbol not in self.stocks:
+                print "%s is not in list" % (symbol)
+            else:
+                history = self.stocks[symbol]
+                history.get_max_month()
 
     def max_year_increase(self, symbols):
         for symbol in symbols:
             symbol = symbol.upper()
-            history = self.stocks[symbol]
-            history.get_max_year()
+            if symbol not in self.stocks:
+                print "%s is not in list" % (symbol)
+            else:
+                history = self.stocks[symbol]
+                history.get_max_year()
 
     def what_if(self, purchase_date, amount_invested, symbols):
 
         for symbol in symbols:
             symbol = symbol.upper()
-            history = self.stocks[symbol]
-            self.purchase_date = purchase_date
-            self.amount_invested = amount_invested
-            history.get_what_if()
+            if symbol not in self.stocks:
+                print "%s is not in list" % (symbol)
+            else:
+                history = self.stocks[symbol]
+                self.purchase_date = purchase_date
+                self.amount_invested = amount_invested
+                history.get_what_if()
 
     def top_3(self):
         max_diff = 0
